@@ -11,6 +11,10 @@
 |
 */
 
-$router->get('/', function () use ($router) {
-    return $router->app->version();
+$router->post('/api/send/{key}', 'MailController@send');
+
+$router->get('*', function () {
+    return View();
 });
+
+
