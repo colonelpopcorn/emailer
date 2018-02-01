@@ -1,0 +1,10 @@
+{
+  "name": "emailer-client",
+  "version": "1.0.0",
+  "description": "Client to interact with the Lumen API.",
+  "main": "index.js",
+  "repository": "https://github.com/colonelpopcorn/emailer",
+  "author": "Jonathan Ling",
+  "license": "MIT",
+  "private": false
+}

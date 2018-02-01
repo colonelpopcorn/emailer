@@ -11,7 +11,7 @@
 |
 */
 
-$router->post('/api/send/{key}', 'MailController@send');
+$router->post('/api/send/{key}/{template}', 'MailController@send');
 
 $router->get('*', function () {
     return View();
