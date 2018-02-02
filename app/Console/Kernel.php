@@ -14,6 +14,9 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         //
+        Commands\CreateApp::class,
+        Commands\RegenKey::class,
+        Commands\GenerateSalt::class
     ];
 
     /**

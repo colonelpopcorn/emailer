@@ -20,6 +20,11 @@ class CreateAddressTable extends Migration
             $table->string('address');
             $table->timestamps();
         });
+
+        Schema::table('apps', function(Blueprint $table) {
+            $table->integer('from_address_id')->references('id')->on('addresses');
+            $table->timestamps();
+        });
     }
 
     /**
