@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use DB;
 
 class CreateApp extends Command
 {
@@ -21,7 +22,7 @@ class CreateApp extends Command
 		$from = $this->argument('from');
 
 		$this->info('Searching for address...');
-		$address_id = DB::query('SELECT id FROM addresses WHERE address LIKE ? LIMIT ?', [$from, 1]);
+		$address_id = DB::select('SELECT id FROM addresses WHERE address LIKE ? LIMIT ?', [$from, 1]);
 
 		if (address_id == null) 
 		{
@@ -30,7 +31,7 @@ class CreateApp extends Command
 
 		}
 
-		$secretKey = hash('sha256', $appName . env('APP_KEY') . $appName, env('SECRET_SALT'));
+		$secretKey = base64_encode(hash('sha256', $appName . env('APP_KEY') . $appName, env('SECRET_SALT')));
 
 		DB::insert('INSERT into apps (name, description, from_address_id) VALUES (?, ?, ?)', [$appName, null, $address_id]);
 		$this->info('New app successfully created! Here\'s your secret, keep it safe!');

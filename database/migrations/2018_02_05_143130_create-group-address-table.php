@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAppTable extends Migration
+class CreateGroupAddressTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreateAppTable extends Migration
      */
     public function up()
     {
-        Schema::create('apps', function(Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->string('description')->nullable();
-            
+        Schema::create('group_addresses', function(Blueprint $table) {
+            $table->integer('address_id')->references('id')->on('addresses');
+            $table->integer('group_id')->references('id')->on('groups');
         });
     }
 
@@ -28,6 +26,6 @@ class CreateAppTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('apps');
+        Schema::dropIfExists('group_addresses');
     }
 }

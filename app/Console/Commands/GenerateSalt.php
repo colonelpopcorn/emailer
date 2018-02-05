@@ -38,11 +38,9 @@ class GenerateSalt extends Command
     public function handle()
     {
         $keyword = $this->argument('keyword');
-        $rounds = $this->argument('rounds');
+        //$rounds = $this->argument('rounds');
 
-        $this->info('Generating salt, going to need to play a lot of CS:GO for this...');
-
-        $hash = hash('sha-256', str_random(rand(20, 20)), $keyword);
+        $hash = base64_encode(hash('sha256', str_random(rand(20, 20)), $keyword));
 
         /*
         // Maybe later...
@@ -52,14 +50,45 @@ class GenerateSalt extends Command
 
             for ($i = 0; $i < $rounds; $i++) 
             {
-                $hash = hash('sha-256', $hash, $keyword); 
+                $hash = hash('sha256', $hash, $keyword); 
             }
 
         }
         */
 
-        $this->info('Spitting out secret salt because life is too short to be mad about CS:GO...');
+        $this->setEnvKey("SECRET_SALT", $hash);
+    }
 
-        putenv('SECRET_SALT=' . $hash);
+    private function setEnvKey($key, $value) 
+    {
+        try 
+        {
+            $envFile = '.env';
+            $contents = file_get_contents($envFile);
+
+            if (strpos($contents, $key) !== false) 
+            {
+                $oldValue = env($key);
+                $newContents = str_replace("{$key}={$oldValue}", "{$key}=${value}\n", $contents);
+                $this->info("Key already exists, generating and saving new key.");
+            }
+            else
+            {
+                $newContents = ($contents .= "\n{$key}={$value}\n");
+                $this->info("No previous key found, generating new key.");
+            }            
+
+            $fileBuffer = fopen('.env', 'w');
+            fwrite($fileBuffer, $newContents);
+            fclose($fileBuffer);
+            $this->info("New key saved to env file.");
+
+        }
+
+        catch (Exception $e)
+        {
+            $this->error('Unable to read or write to .env file!');
+        }
+        
     }
 }
