@@ -11,14 +11,14 @@ class GenerateSalt extends Command
      *
      * @var string
      */
-    protected $signature = 'emailer:createsalt {keyword}'; /*[rounds] Maybe later...*/
+    protected $signature = 'emailer:salt {keyword}'; /*[rounds] Maybe later...*/
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Creates a super secret salt to put in your .env file. Necessary for authentication of appps.';
+    protected $description = 'Create a super secret salt to put in your .env file. Necessary for authentication of apps.';
 
     /**
      * Create a new command instance.

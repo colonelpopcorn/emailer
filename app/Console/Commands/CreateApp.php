@@ -7,7 +7,7 @@ use DB;
 
 class CreateApp extends Command
 {
-	protected $signature = 'emailer:createapp {appname} {from}';
+	protected $signature = 'emailer:apps {appname} {from}';
 	protected $description = 'Create an app and get a secret key for making requests';
 
 	public function __construct() 

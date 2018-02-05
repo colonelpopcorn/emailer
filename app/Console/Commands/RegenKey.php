@@ -6,7 +6,7 @@ use Illuminate\Console\Command;
 
 class RegenKey extends Command
 {
-	protected $signature = 'emailer:regensecret {appname}';
+	protected $signature = 'emailer:secret {appname}';
 	protected $description = 'Revoke and reset the secret key for the specified application.';
 
 	public function __construct() 

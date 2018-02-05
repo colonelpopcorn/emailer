@@ -16,7 +16,9 @@ class Kernel extends ConsoleKernel
         //
         Commands\CreateApp::class,
         Commands\RegenKey::class,
-        Commands\GenerateSalt::class
+        Commands\GenerateSalt::class,
+        Commands\CreateAddress::class,
+        Commands\AddAddressesToApp::class
     ];
 
     /**
