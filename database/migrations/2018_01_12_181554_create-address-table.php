@@ -21,7 +21,7 @@ class CreateAddressTable extends Migration
         });
 
         Schema::table('apps', function(Blueprint $table) {
-            $table->integer('from_address_id')->references('id')->on('addresses');
+            $table->integer('from_address_id')->references('id')->on('addresses')->nullable();
             $table->timestamps();
         });
     }

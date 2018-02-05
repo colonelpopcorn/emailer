@@ -16,8 +16,7 @@ class CreateAppTable extends Migration
         Schema::create('apps', function(Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('description')->nullable();
-            
+            $table->string('description')->nullable();            
         });
     }
 

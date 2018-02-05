@@ -40,7 +40,7 @@ class GenerateSalt extends Command
         $keyword = $this->argument('keyword');
         //$rounds = $this->argument('rounds');
 
-        $hash = base64_encode(hash('sha256', str_random(rand(20, 20)), $keyword));
+        $hash = base64_encode(hash('sha512', str_random(rand(20, 20)), $keyword));
 
         /*
         // Maybe later...
@@ -50,7 +50,7 @@ class GenerateSalt extends Command
 
             for ($i = 0; $i < $rounds; $i++) 
             {
-                $hash = hash('sha256', $hash, $keyword); 
+                $hash = hash('sha512', $hash, $keyword); 
             }
 
         }

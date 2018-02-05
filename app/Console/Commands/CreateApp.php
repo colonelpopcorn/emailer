@@ -22,18 +22,30 @@ class CreateApp extends Command
 		$from = $this->argument('from');
 
 		$this->info('Searching for address...');
-		$address_id = DB::select('SELECT id FROM addresses WHERE address LIKE ? LIMIT ?', [$from, 1]);
+		$address_id = DB::select('SELECT id FROM addresses WHERE address LIKE ? LIMIT ?', [$from, 1])[0]->id;
 
-		if (address_id == null) 
+		if ($address_id == null) 
 		{
 			// Prompt the user to create a new address entry...
+			if ($this->confirm('Email address not found, create a new address?')) 
+			{
+				$name = $this->ask('What is the name of this person or group?');
+				DB::insert('INSERT INTO addresses (name, address) VALUES (?, ?)', [$name, $from]);
+				$this->info("Successfully created {$name}\'s address!");
+				$address_id = DB::getPdo()->lastInsertId();
 
+			}
+			else
+			{
+				$this->error("Cannot continue without a valid from address.");
+				return;
+			}
 
 		}
 
-		$secretKey = base64_encode(hash('sha256', $appName . env('APP_KEY') . $appName, env('SECRET_SALT')));
+		$secretKey = base64_encode(hash('sha512', $appName . env('APP_KEY') . $appName, env('SECRET_SALT')));
 
-		DB::insert('INSERT into apps (name, description, from_address_id) VALUES (?, ?, ?)', [$appName, null, $address_id]);
+		DB::insert('INSERT INTO apps (name, description, from_address_id) VALUES (?, ?, ?)', [$appName, null, $address_id]);
 		$this->info('New app successfully created! Here\'s your secret, keep it safe!');
 		$this->line($secretKey);
 	}

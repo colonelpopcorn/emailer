@@ -13,9 +13,9 @@ class CreateGroupAddressTable extends Migration
      */
     public function up()
     {
-        Schema::create('group_addresses', function(Blueprint $table) {
+        Schema::create('app_addresses', function(Blueprint $table) {
             $table->integer('address_id')->references('id')->on('addresses');
-            $table->integer('group_id')->references('id')->on('groups');
+            $table->integer('app_id')->references('id')->on('apps');
         });
     }
 
