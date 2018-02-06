@@ -22,7 +22,7 @@ class CreateApp extends Command
 		$from = $this->argument('from');
 
 		$this->info('Searching for address...');
-		$address_id = DB::select('SELECT id FROM addresses WHERE address LIKE ? LIMIT ?', [$from, 1])[0]->id;
+		$address_id = DB::select('SELECT id FROM addresses WHERE address LIKE ? LIMIT ?', [$from, 1]);
 
 		if ($address_id == null) 
 		{
@@ -41,6 +41,10 @@ class CreateApp extends Command
 				return;
 			}
 
+		}
+		else 
+		{
+			$address_id = $address_id[0]->id;
 		}
 
 		$secretKey = base64_encode(hash('sha512', $appName . env('APP_KEY') . $appName, env('SECRET_SALT')));

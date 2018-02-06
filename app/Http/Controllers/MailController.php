@@ -34,7 +34,7 @@ class MailController extends Controller
             return json_encode("App key does not match app name! Regenerate key and try again!");
         
         Mail::send($template.'generated', $request, function($message) {
-
+            
 
         });
 

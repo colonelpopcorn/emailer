@@ -38,7 +38,21 @@ class CreateAddress extends Command
      */
     public function handle()
     {
-        
+        $name = $this->argument('name');
+        $address = $this->argument('address');
+
+        $existsAlready = DB::select('SELECT * FROM addresses WHERE name == ? AND address == ? LIMIT ?', [$name, $address, 1]);
+
+        if (count($existsAlready) > 0) 
+        {
+            $this->info("This record already exists!");
+            $this->line($existsAlready[0]);
+        }
+        else
+        {
+            DB::insert('INSERT INTO addresses (name, address) VALUES (?, ?)', [$name, $address]);
+            $this->info("Successfully added {$name} to database!");
+        }
 
     }
 }

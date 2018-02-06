@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use DB;
 
 class AddAddressesToApp extends Command
 {
@@ -37,6 +38,21 @@ class AddAddressesToApp extends Command
      */
     public function handle()
     {
-        
+        $apps = DB::select('SELECT * FROM apps');
+        $app_names = [];
+
+        foreach ($apps as $key => $value) {
+            $app_names[$key] = $value->name;
+        }
+
+        if (count($apps) <= 0) 
+        {
+            $this->error("No apps to associate with addresses!");
+            return;
+        }
+
+        $app_id = $this->choice('Select an app:', $app_names, 0);
+
+        $this->info($app_id);        
     }
 }
