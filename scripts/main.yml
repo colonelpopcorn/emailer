@@ -6,6 +6,7 @@
     - nginx
     - php
     - sqlite
+    - zip
     - composer
   tasks: 
     - 

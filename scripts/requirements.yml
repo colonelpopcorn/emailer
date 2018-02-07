@@ -10,5 +10,9 @@
 - name: php-versions
   src: geerlingguy.php-versions
 
+- name: zip
+  src: nephelaiio.zip
+
 - name: composer
   src: geerlingguy.composer
+
