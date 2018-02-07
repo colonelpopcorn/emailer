@@ -1,0 +1,14 @@
+- name: nginx
+  src: geerlingguy.nginx
+
+- name: sqlite
+  src: manala.sqlite
+
+- name: php
+  src: geerlingguy.php
+
+- name: php-versions
+  src: geerlingguy.php-versions
+
+- name: composer
+  src: geerlingguy.composer

@@ -1,0 +1,37 @@
+--- 
+- 
+  hosts: all
+  name: "Build out a home for emailer."
+  roles: 
+    - nginx
+    - php
+    - sqlite
+    - composer
+  tasks: 
+    - 
+      name: "Make sure vagrant can access folders."
+      user: 
+        group: www-data
+        name: vagrant
+    - 
+      file: 
+        group: www-data
+        mode: 0755
+        owner: www-data
+        path: /vagrant
+        state: directory
+      name: "Make sure that nginx has access to folders."
+    -
+      name: "Bootstrap galaxy requirements."
+      shell:
+        chdir: /vagrant
+        cmd: ansible-galaxy install -r /vagrant/scripts/requirements.yml
+    - 
+      name: "Install composer deps."
+      shell: 
+        chdir: /vagrant
+        cmd: "composer install"
+
+  vars_files: 
+    - vars.yml
+

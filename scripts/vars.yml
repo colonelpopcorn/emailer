@@ -1,0 +1,20 @@
+--- 
+php_version: '7.1'
+nginx_remove_default_vhost: true
+nginx_vhosts: 
+  - 
+    extra_parameters: |
+        location / {
+            try_files $uri $uri/ /index.php?$args;
+        }
+        location ~ \.php$ {
+          fastcgi_pass unix:/run/php/php7.0-fpm.sock;
+          fastcgi_index index.php;
+          include fastcgi_params;
+          include fastcgi.conf;
+        }
+    index: "index.php index.html index.htm"
+    listen: "80 default_server"
+    root: /vagrant/public
+    server_name: processaurus.com
+    nginx_remove_default_vhost: true
