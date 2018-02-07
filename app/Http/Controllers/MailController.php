@@ -17,6 +17,11 @@ class MailController extends Controller
         //
     }
 
+    public function index()
+    {
+        return json_encode("Emailer is an application!");
+    }
+
     public function send(Request $request, $name, $template) 
     {
         $this->validate($request, [

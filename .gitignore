@@ -4,3 +4,7 @@ Homestead.json
 Homestead.yaml
 .env
 *.sqlite
+.vagrant/*
+scripts/roles/*
+scripts/*.retry
+*.log

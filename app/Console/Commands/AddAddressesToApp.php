@@ -42,7 +42,7 @@ class AddAddressesToApp extends Command
         $app_names = [];
 
         foreach ($apps as $key => $value) {
-            $app_names[$key] = $value->name;
+            $app_names[$key] = [$key, $value->name];
         }
 
         if (count($apps) <= 0) 
@@ -51,8 +51,36 @@ class AddAddressesToApp extends Command
             return;
         }
 
-        $app_id = $this->choice('Select an app:', $app_names, 0);
+        $appHeaders = ['Index', 'App Name'];
 
-        $this->info($app_id);        
+        $this->table($appHeaders, $app_names);
+
+        $app_id = $this->ask('Select an app by index:');
+
+        $addresses = DB::select('SELECT * FROM addresses WHERE addresses.id != ? LIMIT 50',
+         [$apps[$app_id]->from_address_id]);
+
+        $address_names = [];
+
+        foreach ($addresses as $key => $value) {
+            $address_names[$key] = [$value->id, $value->name, $value->address];
+        }
+
+        $addressHeaders = ['Index', 'Name', 'Address'];
+
+        $this->table($addressHeaders, $address_names);
+        $address_id = $this->ask("Select an address by index: ");
+
+        $quickCheck = DB::select('SELECT * FROM app_addresses WHERE app_id = ? AND address_id = ?', [$app_id, $address_id]);
+
+        if (count($quickCheck) > 0)
+        {
+            $this->error("Cannot insert an address that's already associated with {$apps[$app_id]->name}!");
+            return;
+        }
+
+        DB::insert('INSERT INTO app_addresses (app_id, address_id) VALUES (?, ?)', [$app_id, $address_id]);
+
+        $this->info("Successfully updated app addresses for {$apps[$app_id]->name}!");
     }
 }
