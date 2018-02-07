@@ -28,6 +28,7 @@
         cmd: ansible-galaxy install -r /vagrant/scripts/requirements.yml
     - 
       name: "Install composer deps."
+      become: false
       shell: 
         chdir: /vagrant
         cmd: "composer install"
