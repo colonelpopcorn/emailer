@@ -17,6 +17,9 @@ class RegenKey extends Command
 
 	public function handle()
 	{
-		$this->info('New key successfully created!');
+		$appName = $this->argument('appname');
+		$hash = base64_encode(hash('sha512', $appName . env('APP_KEY') . $appName, env('SECRET_SALT')));
+		$this->info("Here's your key:");
+		$this->line($hash);
 	}
 }

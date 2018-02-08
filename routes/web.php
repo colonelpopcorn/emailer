@@ -11,7 +11,7 @@
 |
 */
 
-$router->post('/api/send/{key}/{template}', 'MailController@send');
+$router->post('/api/send/{name}/{template}', 'MailController@send');
 
 $router->get('/{any:.*}', 'MailController@index');
 
