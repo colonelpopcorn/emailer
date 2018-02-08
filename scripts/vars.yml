@@ -1,5 +1,6 @@
 --- 
 php_version: '7.1'
+php_webserver_daemon: 'nginx'
 nginx_remove_default_vhost: true
 nginx_vhosts: 
   - 
