@@ -5,7 +5,7 @@ nginx_vhosts:
   - 
     extra_parameters: |
         location / {
-            try_files $uri $uri/ /index.php?$args;
+            try_files $uri $uri/ /index.php?$query_string;
         }
         location ~ \.php$ {
           fastcgi_pass unix:/run/php/php7.0-fpm.sock;

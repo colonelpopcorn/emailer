@@ -13,6 +13,6 @@
 
 $router->post('/api/send/{key}/{template}', 'MailController@send');
 
-$router->get('*', 'MailController@index');
+$router->get('/{any:.*}', 'MailController@index');
 
 
