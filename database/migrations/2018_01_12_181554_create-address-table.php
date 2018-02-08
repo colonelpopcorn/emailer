@@ -17,12 +17,10 @@ class CreateAddressTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('address');
-            $table->timestamps();
         });
 
         Schema::table('apps', function(Blueprint $table) {
             $table->integer('from_address_id')->references('id')->on('addresses')->nullable();
-            $table->timestamps();
         });
     }
 

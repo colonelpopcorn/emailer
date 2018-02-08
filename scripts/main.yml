@@ -22,11 +22,6 @@
         path: /vagrant
         state: directory
       name: "Make sure that nginx has access to folders."
-    -
-      name: "Bootstrap galaxy requirements."
-      shell:
-        chdir: /vagrant
-        cmd: ansible-galaxy install -r /vagrant/scripts/requirements.yml
     - 
       name: "Install composer deps."
       become: false

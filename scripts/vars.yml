@@ -17,5 +17,5 @@ nginx_vhosts:
     index: "index.php index.html index.htm"
     listen: "80 default_server"
     root: /vagrant/public
-    server_name: processaurus.com
+    server_name: emailer.com
     nginx_remove_default_vhost: true
