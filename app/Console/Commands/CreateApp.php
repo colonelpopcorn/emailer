@@ -31,7 +31,7 @@ class CreateApp extends Command
 			{
 				$name = $this->ask('What is the name of this person or group?');
 				DB::insert('INSERT INTO addresses (name, address) VALUES (?, ?)', [$name, $from]);
-				$this->info("Successfully created {$name}\'s address!");
+				$this->info("Successfully created {$name}'s address!");
 				$address_id = DB::getPdo()->lastInsertId();
 
 			}

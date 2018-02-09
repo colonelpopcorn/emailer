@@ -50,8 +50,9 @@ class MailController extends Controller
             [$app->from_address_id, 1]);
         
         Mail::send($template.'generated', $request->all(), function($message) use ($toAddresses, $fromAddress, $subject) {
-            foreach ($toAddresses as $key => $value) {
-                $message->to($value["address"]);
+                     
+            foreach ($toAddresses as $contact) {
+                $message->to($contact->address);
             }
 
             $message->from($fromAddress[0]->address);

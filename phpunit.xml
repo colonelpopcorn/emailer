@@ -23,5 +23,9 @@
         <env name="APP_ENV" value="testing"/>
         <env name="CACHE_DRIVER" value="array"/>
         <env name="QUEUE_DRIVER" value="sync"/>
+        <env name="DB_CONNECTION" value="sqlite"/>
+        <env name="APP_KEY" value="base64:Q3+XwkftK+L4kiAOJ1Lc5XJnoL47kRIa3n2ZmjpfkDU=/"/>
+        <env name="SECRET_SALT" value="D9ady0wovg5P2Go87VvkgHhlzRlBa5TWJfC6YwWBkxU="/>
+        <env name="MAIL_DRIVER" value="smtp"/>
     </php>
 </phpunit>
