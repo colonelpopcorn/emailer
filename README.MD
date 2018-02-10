@@ -1,6 +1,6 @@
 # Emailer
 
-<p align="center">![alt text](https://raw.githubusercontent.com/colonelpopcorn/emailer/master/resources/assets/emailer.png)</p>
+<p align="center"<img src="https://raw.githubusercontent.com/colonelpopcorn/emailer/master/resources/assets/emailer.png"></p>
 
 [![Join the chat at https://gitter.im/emailer-lumen](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/emailer-lumen?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Build Status](https://travis-ci.org/colonelpopcorn/emailer.svg?branch=master)](https://travis-ci.org/colonelpopcorn/emailer)
