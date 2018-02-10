@@ -1,0 +1,9 @@
+language: php
+php:
+  - '7.1'
+
+services: sqlite3
+
+script:
+  - composer install
+  - phpunit
