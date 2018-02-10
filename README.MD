@@ -1,11 +1,10 @@
 # Emailer
 
-<p align="center"<img src="https://raw.githubusercontent.com/colonelpopcorn/emailer/master/resources/assets/emailer.png"></p>
+![emailer](https://raw.githubusercontent.com/colonelpopcorn/emailer/master/resources/assets/emailer.png)
 
 [![Join the chat at https://gitter.im/emailer-lumen](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/emailer-lumen?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Build Status](https://travis-ci.org/colonelpopcorn/emailer.svg?branch=master)](https://travis-ci.org/colonelpopcorn/emailer)
 ## Getting Started
-----------------
 
 Emailer is a lightweight email microservice. The idea is to use it to handle sending emails from your applications. To get started using Emailer you will need to do five things.
 
@@ -20,15 +19,13 @@ Emailer is a lightweight email microservice. The idea is to use it to handle sen
 5. Then start your webserver and send a POST request to `http://<your-url>/api/send/<appname>/<templatename>`
 
 ## Roadmap
-----------------
 
-[] Create client to replace artisan commands
-[] Write tests for artisan commands
-[] Mock database to make tests faster
-[] Refactor MailController to be more testable
+- [ ] Create client to replace artisan commands
+- [ ] Write tests for artisan commands
+- [ ] Mock database to make tests faster
+- [ ] Refactor MailController to be more testable
 
 ## Contributing
-----------------
 
 To get started contributing, just fork this repository and clone it.
 
@@ -41,13 +38,12 @@ When you're ready to submit a pull request, first run `git pull` on the master b
 If you run into any trouble just ask in our gitter chat!
 
 ## Licensing and attributions
-----------------
 
 Emailer is released under the MIT license.
 
 The emailer logo is comprised of several creative commons assets.
 
-* ![Janda Manatee Font by Kimberly Geswein](http://www.fontspace.com/kimberly-geswein/janda-manatee)
-* ![Leterra (Letter) by francesco_rallandin](https://openclipart.org/detail/31987/architetto-lettera)
-* ![Hermes by ymai](https://openclipart.org/detail/194990/hermes)
-* ![wing by elpedro](https://openclipart.org/detail/65851/wing)
+* [Janda Manatee Font by Kimberly Geswein](http://www.fontspace.com/kimberly-geswein/janda-manatee)
+* [Leterra (Letter) by francesco_rallandin](https://openclipart.org/detail/31987/architetto-lettera)
+* [Hermes by ymai](https://openclipart.org/detail/194990/hermes)
+* [wing by elpedro](https://openclipart.org/detail/65851/wing)
