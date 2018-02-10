@@ -12,10 +12,10 @@ Emailer is a lightweight email microservice. The idea is to use it to handle sen
 2. Fill out the .env file with your mail server settings and run `php artisan key:generate`
 3. Create a template using the [Blade templating engine](https://laravel.com/docs/5.6/blade) save it as `<templatename>generated.blade.php>`
 4. Run the artisan commands for Emailer in this order
-	a. emailer:salt
-	b. emailer:apps
-	c. emailer:address (to generate an address to send to)
-	d. emailer:addresses (to connect the new address with the app)
+	* emailer:salt
+	* emailer:apps
+	* emailer:address (to generate an address to send to)
+	* emailer:addresses (to connect the new address with the app)
 5. Then start your webserver and send a POST request to `http://<your-url>/api/send/<appname>/<templatename>`
 
 ## Roadmap
